@@ -19,41 +19,54 @@ const ProductsContext = React.createContext();
 export const  ProductsProvider = ({children}) => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
 
-     const openSidebar = () => {
-       dispatch({ type: "SIDEBAR_OPEN" });
-     };
+      const openSidebar = () => {
+        dispatch({ type: "SIDEBAR_OPEN" });
+      };
 
-     const closeSidebar = () => {
-       dispatch({ type: "SIDEBAR_CLOSE" });
-     };
+      const closeSidebar = () => {
+        dispatch({ type: "SIDEBAR_CLOSE" });
+      };
 
-     const fetchProducts = async (url) => {
-      dispatch({  type: "GET_PRODUCTS_BEGIN"})
-      try {
-        const  response = await axios.get(url);
-        const products = response.data;
-        console.log(products)
-        dispatch({ type: "GET_PRODUCTS_SUCCESS", payload: products });
-      } catch (error) {
-        dispatch({ type: "GET_PRODUCTS_ERROR", payload: error.message });
+      const fetchProducts = async (url) => {
+        dispatch({  type: "GET_PRODUCTS_BEGIN"})
+        try {
+          const  response = await axios.get(url);
+          const products = response.data;
+          console.log(products)
+          dispatch({ type: "GET_PRODUCTS_SUCCESS", payload: products });
+        } catch (error) {
+          dispatch({ type: "GET_PRODUCTS_ERROR", payload: error.message });
+        }
       }
-     }
 
-     React.useEffect(()=> {
-      fetchProducts(url);
-     },[])
 
-    const values = {
-      ...state,
-      openSidebar,
-      closeSidebar,
-    };
+      const fetchSingleProduct = async  (url) => {
+        dispatch({ type: "GET_PRODUCTS_BEGIN"})
+        try {
+          const response = await axios.get(url);
+          const singleProduct = response.data;
+          dispatch({ type: "GET_PRODUCTS_SUCCESS", payload: singleProduct });
+        } catch (error) {
+          dispatch({ type: "GET_PRODUCTS_ERROR", payload: error.message });
+        }
+      }
 
-    return (
-        <ProductsContext.Provider value={values}>
-            {children}
-        </ProductsContext.Provider>
-    )
+      React.useEffect(()=> {
+        fetchProducts(url);
+      },[])
+
+      const values = {
+        ...state,
+        openSidebar,
+        closeSidebar,
+        fetchSingleProduct
+      };
+
+      return (
+          <ProductsContext.Provider value={values}>
+              {children}
+          </ProductsContext.Provider>
+      )
 }
 
 export const useProductsContext = () => {

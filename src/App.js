@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom"
-import {HomePage } from "./pages"
+import {HomePage, SingleProductPage} from "./pages"
 import { Navbar, Sidebar} from "./components";
 
 
@@ -9,7 +9,8 @@ function App() {
     <Navbar />
     <Sidebar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/products/:slug" element={ <SingleProductPage/>} />
       </Routes>
     </BrowserRouter>
   );
