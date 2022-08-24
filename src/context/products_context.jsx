@@ -8,7 +8,7 @@ const initialState = {
   products_loading: false,
   products_error: false,
   products: [],
-  featured_products: [],
+  summer_Products: [],
   single_product_loading: false,
   single_product_error: false,
   single_product: {},
@@ -32,6 +32,7 @@ export const  ProductsProvider = ({children}) => {
       try {
         const  response = await axios.get(url);
         const products = response.data;
+        console.log(products)
         dispatch({ type: "GET_PRODUCTS_SUCCESS", payload: products });
       } catch (error) {
         dispatch({ type: "GET_PRODUCTS_ERROR", payload: error.message });
