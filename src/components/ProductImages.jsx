@@ -32,7 +32,7 @@ const Wrapper = styled.section`
     width: 100%;
     display: block;
     border-radius: var(--radius);
-    object-fit: cover;
+    object-fit: contain;
   }
   .gallery {
     margin-top: 1rem;
@@ -41,6 +41,7 @@ const Wrapper = styled.section`
     column-gap: 1rem;
     img {
       height: 100px;
+      object-fit: contain;
       cursor: pointer;
     }
   }
@@ -60,10 +61,12 @@ const Wrapper = styled.section`
   @media (min-width: 992px) {
     .main {
       height: 500px;
+      object-fit: contain;
     }
     .gallery {
       img {
         height: 75px;
+        object-fit: contain;
       }
     }
   }
