@@ -8,6 +8,7 @@ import Error  from "./Error";
 import ProductImages from "./ProductImages";
 import AddToCart from "./AddToCart";
 import FashionPhilo from "./FashionPhilo";
+import Sort from "./SortDisplayViews";
 
 
-export { Hero, Navbar, Sidebar, SummerPage, Stars, Loading, Error, ProductImages, AddToCart, FashionPhilo };
+export { Hero, Navbar, Sidebar, SummerPage, Stars, Loading, Error, ProductImages, AddToCart, FashionPhilo, Sort };

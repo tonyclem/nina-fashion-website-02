@@ -24,30 +24,32 @@ import Error from './Error';
     <Error />
   }
   
-  console.log(summer_Products);
-
   return (
     <Wrapper>
       <h1>Summer Sales</h1>
       <div className="container-wrapper">
-        {summer_Products?.map((product) => (
-          <div className="container" key={product.slug}>
+        {summer_Products.map((product) => {
+
+          const {slug, name, rating, price, image} = product;
+          return(
+          <div className="container" key={slug}>
             <div className="row">
-              <Link to={`/products/${product.slug}`}>
-                <img src={product.image} alt={product.name} />
+              <Link to={`/products/${slug}`}>
+                <img src={image} alt={name} />
               </Link>
               <div className="row-footer">
-                <h4>{product.name}</h4>
-                <p>{product.slug}</p>
+                <h4>{name}</h4>
+                <p>{slug}</p>
                 <div className="stars">
-                  <Stars stars={product.rating} />
+                  <Stars stars={rating} />
                 </div>
 
-                <h6>{formatPrice(product.price)}</h6>
+                <h6>{formatPrice(price)}</h6>
               </div>
             </div>
           </div>
-        ))}
+          )
+ })}
       </div>
     </Wrapper>
   );

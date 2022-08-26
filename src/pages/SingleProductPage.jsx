@@ -1,5 +1,5 @@
 import React from   'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useProductsContext } from '../context/products_context';
 import { formatPrice } from '../utils/helpers';
@@ -8,19 +8,29 @@ import { singleProductUrl as url } from "../utils/constants";
 import { Loading, Error, Stars, ProductImages, AddToCart } from '../components';
 
 export const SingleProductPage = () => {
-  const params = useParams()
-  const {slug} = params;
+  const {slug} = useParams()
+  const navigate = useNavigate()
 
   const {
-    products_loading: loading,
-    products_error: error,
+    single_product_loading: loading,
+    single_product_error: error,
     single_product: product,
     fetchSingleProduct,
   } = useProductsContext();
 
   React.useEffect(() => {
     fetchSingleProduct(`${url}${slug}`);
-  }, [url,slug]);
+    // eslint-disable-next-line
+  }, [url, slug]);
+
+  React.useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+    // eslint-disable-next-line
+  }, [error]);
 
   if(loading){
     <Loading />
@@ -36,20 +46,19 @@ export const SingleProductPage = () => {
     description,
     brand,
     _id: sku,
-    images,
     countInStock,
     rating,
-    colors,
-    numReviews,} = product
+    images,
+    } = product
 
   return (
     <Wrapper>
       <main className="section section-center page">
-        <Link to="/products" className="btn">
+        <Link to="/" className="btn">
           Back to products
         </Link>
         <div className="product-center">
-          <ProductImages images={images} />
+        < ProductImages images={images} />
 
           <section className="content">
             <h2>{name}</h2>

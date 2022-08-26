@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero, SummerPage, FashionPhilo } from '../components'
+import { Hero, SummerPage, FashionPhilo, Sort } from '../components'
 
 export const HomePage = () => {
   return (
@@ -7,6 +7,7 @@ export const HomePage = () => {
         <Hero />
         <SummerPage />
         <FashionPhilo />
+        <Sort />
     </div>
   )
 }

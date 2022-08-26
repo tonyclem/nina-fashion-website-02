@@ -2,17 +2,7 @@ import React from 'react';
 import axios from "axios";
 import reducer from "../reducers/product_reducer";
 import { products_url as url } from '../utils/constants';
-
-const initialState = {
-  isSidebarOpen: false,
-  products_loading: false,
-  products_error: false,
-  products: [],
-  summer_Products: [],
-  single_product_loading: false,
-  single_product_error: false,
-  single_product: {},
-};
+import initialState from '../initialStates/ProductInitialState';
 
 const ProductsContext = React.createContext();
 
