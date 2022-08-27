@@ -16,20 +16,13 @@ const FashionPhilo = () => {
             "Fashion is part of the daily air and it changes all the time, with
             all the events. You can even see the approaching of a revolution in
             clothes. You can see and feel everything in clothes." 
-            <span> 
-
-            Diana
-            Vreeland
-            </span>
+            <span>Diana Vreeland</span>
           </p>
           <p>
             "Don't be into trends. Don't make fashion own you, but you decide
             what you are, what you want to express by the way you dress and the
             way to live." 
-            <span>
-                
-                Gianni Versace
-                </span>
+            <span>Gianni Versace</span>
           </p>
         </div>
       </section>
@@ -38,6 +31,8 @@ const FashionPhilo = () => {
 }
 
 const Wrapper = styled.main`
+  margin: 0 3rem;
+
   .product-center {
     display: grid;
     gap: 4rem;

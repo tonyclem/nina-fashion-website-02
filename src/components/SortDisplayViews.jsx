@@ -33,7 +33,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  margin: 3rem;
+  margin: 3rem 4rem;
   column-gap: 2rem;
   @media (max-width: 576px) {
     display: grid;
@@ -47,9 +47,11 @@ const Wrapper = styled.div`
       margin-right: 0.5rem;
     }
   }
+  
   @media (min-width: 768px) {
     column-gap: 2rem;
   }
+
   p {
     text-transform: capitalize;
     margin-bottom: 0;

@@ -8,11 +8,11 @@ export const FilterProvider = ({ children }) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
     const setGridView = () => {
-        dispatch({ type: "SET_TO_GRID " });
+        dispatch({ type: "SET_TO_GRID" });
     }
 
     const setListView = () => {
-        dispatch({ type: "SET_TO_LIST " });
+        dispatch({ type: "SET_TO_LIST"});
     }
 
     const values = {

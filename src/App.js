@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom"
 import {HomePage, SingleProductPage} from "./pages"
-import { Navbar, Sidebar} from "./components";
+import { Navbar, Sidebar, Footer} from "./components";
 
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/products/:slug" element={ <SingleProductPage/>} />
       </Routes>
+    <Footer />
     </BrowserRouter>
   );
 }

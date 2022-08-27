@@ -22,6 +22,7 @@ body {
   --on-background: #ffffff;
   --background: #f1f1f1;
   --on-primary-footer: #dddddd;
+  --clr-footer-bg: #d9d9d9;
   --clr-primary-1: hsl(112, 82%, 74%);
   --clr-primary-5: hsl(112, 91%, 34%);
   --clr-primary-7: hsl(112, 94%, 20%);
@@ -35,6 +36,8 @@ body {
   --spacing: 0.1rem;
   --radius: 0.25rem;
   --clr-error: hsl(0, 100%, 68%);
+  --clr-black: #222;
+  --max-width: 1170px;
 }
 
 ul {
@@ -101,11 +104,29 @@ h5 {
 /* section */
 .section {
   padding: 5rem 0;
+  margin: 0 3rem;
 }
+
 .section-center {
   width: 90vw;
   margin: 0 auto;
   max-width: var(--max-width);
+}
+
+.title {
+  text-align: center;
+}
+.title .underline {
+  width: 6rem;
+  height: 0.25rem;
+  background: #49a6e9;
+  background: var(--clr-primary-5);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-center {
+  text-align: center;
 }
 
 @media screen and (min-width: 992px) {

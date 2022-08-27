@@ -9,6 +9,32 @@ import ProductImages from "./ProductImages";
 import AddToCart from "./AddToCart";
 import FashionPhilo from "./FashionPhilo";
 import Sort from "./SortDisplayViews";
+import HomePageProduct from "./HomePageProduct";
+import FeaturedProducts from "./FeaturedProducts";
+import DealView from "./DealView";
+import Reviewer from "./Reviewer";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import ContactUsPage from "./ContactUsPage";
 
 
-export { Hero, Navbar, Sidebar, SummerPage, Stars, Loading, Error, ProductImages, AddToCart, FashionPhilo, Sort };
+export {
+  Hero,
+  Navbar,
+  Sidebar,
+  SummerPage,
+  Stars,
+  Loading,
+  Error,
+  ProductImages,
+  AddToCart,
+  FashionPhilo,
+  Sort,
+  HomePageProduct,
+  FeaturedProducts,
+  DealView,
+  Reviewer,
+  Contact,
+  ContactUsPage,
+  Footer
+};

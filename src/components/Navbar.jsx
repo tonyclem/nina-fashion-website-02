@@ -19,7 +19,7 @@ const Navbar = () => {
           <div>
             <ul className="ul-contact">
               <div className="contact-list">
-                <li>contact</li>
+                <li className="contact">contact</li>
                 <li>service</li>
               </div>
 

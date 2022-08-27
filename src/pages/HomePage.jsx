@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero, SummerPage, FashionPhilo, Sort } from '../components'
+import { Hero, SummerPage, FashionPhilo, Sort, HomePageProduct, FeaturedProducts, DealView, Reviewer, Contact } from '../components'
 
 export const HomePage = () => {
   return (
@@ -8,6 +8,11 @@ export const HomePage = () => {
         <SummerPage />
         <FashionPhilo />
         <Sort />
+        <HomePageProduct /> 
+        <FeaturedProducts />
+        <DealView />
+        <Reviewer />
+        <Contact />
     </div>
   )
 }

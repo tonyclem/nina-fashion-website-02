@@ -51,6 +51,8 @@ export const SingleProductPage = () => {
     images,
     } = product
 
+  
+
   return (
     <Wrapper>
       <main className="section section-center page">
