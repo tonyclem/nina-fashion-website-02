@@ -1,60 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { social } from "../utils/constants";
-import { BsGeoAlt, BsTelephone, BsEnvelope } from "react-icons/bs";
 
 const Footer = () => {
   return (
     <Wrapper>
-      <div className="container">
-        <div className="about-container">
-          <h2>About us</h2>
-          <h6>
-            Lorem ipsum dolor sit, amet consectetur <br /> adipisicing elit.
-            Expedita, a?
-          </h6>
-          <div className="social">
-            <h3>Stay In Touch</h3>
-            <ul className="social-icons">
-              {social.map((social) => {
-                const { id, url, icon } = social;
-                return (
-                  <li key={id} className="social-icon">
-                    <a href={url}>{icon}</a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-
-        <div className="info-container">
-          <h2>Information</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-          <div className="contact">
-            <h4>Contact us</h4>
-            <div>
-              <span>
-                <BsGeoAlt />
-              </span>
-              1 Weert Nederland
-            </div>
-            <div>
-              <span>
-                <BsTelephone />
-              </span>
-              (+316 000 0000 00)
-            </div>
-            <div>
-              <span>
-                <BsEnvelope />
-              </span>
-              sales@mail.com
-            </div>
-          </div>
-        </div>
-      </div>
-
       <h5 className="last-footer">
         {new Date().getFullYear()} &copy; <span>Lady Nina</span>
       </h5>

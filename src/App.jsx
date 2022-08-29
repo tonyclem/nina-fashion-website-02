@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom"
-import {HomePage, SingleProductPage, ContactUsPage, AboutPage} from "./pages"
+import {HomePage, SingleProductPage, ContactUsPage, AboutPage, ProductsPage} from "./pages"
 import { Navbar, Sidebar, Footer} from "./components";
 
 
@@ -13,6 +13,7 @@ function App() {
         <Route exact path="/products/:slug" element={<SingleProductPage />} />
         <Route exact path="/page/contact" element={<ContactUsPage />} />
         <Route exact path="/about" element={<AboutPage />} />
+        <Route exact path='/products' element={<ProductsPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
