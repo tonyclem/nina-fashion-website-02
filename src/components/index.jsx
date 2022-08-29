@@ -16,6 +16,7 @@ import Reviewer from "./Reviewer";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import Filters from "./Filters";
+import SortProductItems from "./SortProductItems";
 
 
 
@@ -37,5 +38,6 @@ export {
   Reviewer,
   Contact,
   Filters,
+  SortProductItems,
   Footer,
 };

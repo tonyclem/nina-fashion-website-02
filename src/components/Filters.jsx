@@ -11,7 +11,8 @@ const Filters = () => {
       text,
        category,
        brand,
-       color
+       color,
+       shipping
     },
     updateFilters,
     all_products
@@ -115,6 +116,12 @@ const Filters = () => {
                 );
               })}
             </div>
+          </div>
+          {/* end color */}
+          {/* Check */}
+          <div className="form-control shipping">
+            <label htmlFor="shipping">frees shipping</label>
+            <input type="checkbox" name="shipping" value={shipping} onChange={updateFilters}/>
           </div>
         </form>
       </div>
