@@ -3,7 +3,7 @@ const initialState = {
     filtered_products: [],
     all_products: [],
     sort: 'price-lowest',
-    filter: {
+    filters: {
         text: "",
         company: "all",
         category: "all",
@@ -13,8 +13,6 @@ const initialState = {
         price: 0,
         shipping: false
        },
-  
-
 }
 
 export default initialState;

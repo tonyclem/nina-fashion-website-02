@@ -15,4 +15,3 @@ root.render(
     </ProductsProvider>
   </React.StrictMode>
 );
-
