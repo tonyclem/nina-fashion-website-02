@@ -15,7 +15,7 @@ import DealView from "./DealView";
 import Reviewer from "./Reviewer";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import ContactUsPage from "./ContactUsPage";
+
 
 
 export {
@@ -35,6 +35,5 @@ export {
   DealView,
   Reviewer,
   Contact,
-  ContactUsPage,
   Footer
 };

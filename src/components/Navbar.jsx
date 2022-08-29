@@ -19,8 +19,12 @@ const Navbar = () => {
           <div>
             <ul className="ul-contact">
               <div className="contact-list">
-                <li className="contact">contact</li>
-                <li>service</li>
+                <Link to="/page/contact" className="contact">
+                  contact
+                </Link>
+                <li>
+                  service
+                </li>
               </div>
 
               <div className="contact-social">
@@ -41,15 +45,19 @@ const Navbar = () => {
               <button
                 type="button"
                 className="nav-toggle"
-               onClick={openSidebar}
+                onClick={openSidebar}
               >
                 <FaBars />
               </button>
             </div>
             <ul className="ul-nav">
-              <li className="nav-hover underline">home</li>
+              <Link to="/">
+                <li className="nav-hover underline">home</li>
+              </Link>
               <li className="nav-hover underline">product</li>
-              <li className="nav-hover underline">about us</li>
+              <Link to="/about">
+                <li className="nav-hover underline">about us</li>
+              </Link>
             </ul>
             <div className="nav-social ul-nav">
               <span>
@@ -58,9 +66,7 @@ const Navbar = () => {
               <span className="bag">
                 <img src={shoppingBag} alt="shopping bag" />
                 <span className="item-count">
-                  <Link to="/cart">
-                   
-                  </Link>
+                  <Link to="/cart"></Link>
                 </span>
               </span>
 
@@ -90,6 +96,10 @@ const Wrapper = styled.div`
 
   .ul-contact {
     display: none;
+
+    .contact{
+      color: #000;
+    }
   }
 
   .ul-nav {
@@ -199,6 +209,7 @@ const Wrapper = styled.div`
           margin-left: 1.5rem;
           text-transform: capitalize;
           position: relative;
+          color: #000;
         }
 
         .nav-hover::after {
