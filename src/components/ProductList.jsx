@@ -1,12 +1,10 @@
 import React from "react";
 import { useFilterContext } from "../context/filter_context";
-import { useProductsContext } from "../context/products_context";
 import ProductGridView from "./ProductGridView";
-import ProductViews from "./ProductView";
+import ProductListView from "./ProductListView";
 
 const ProductList = () => {
-    const {  grid_view } = useFilterContext();
-    const { products } = useProductsContext();
+    const {  grid_view, filtered_products: products } = useFilterContext();
 
 
     if(products.length < 1){
@@ -16,7 +14,7 @@ const ProductList = () => {
     }
 
     if(grid_view === false){
-        return <ProductViews products={products} />
+        return <ProductListView products={products} />;
     }
 
     return <ProductGridView products={products} >Product list</ProductGridView>

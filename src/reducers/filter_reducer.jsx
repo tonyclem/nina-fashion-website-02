@@ -1,5 +1,18 @@
 
 const filter_reducer = (state, action) => {
+  
+    if (action.type === "LOAD_PRODUCTS") {
+      let maxPrice = action.payload.map((p) => p.price);
+      maxPrice = Math.max(...maxPrice);
+  
+      return {
+        ...state,
+        all_products: [...action.payload],
+        filtered_products: [...action.payload],
+        filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
+      };
+    }
+
   if (action.type === "SET_TO_GRID") {
     return { ...state, grid_view: true };
   }
@@ -8,22 +21,16 @@ const filter_reducer = (state, action) => {
     return { ...state, grid_view: false };
   }
 
-  if (action.type === "LOAD_PRODUCTS") {
-    let maxPrice = action.payload.map((p) => p.price);
-    maxPrice = Math.max(...maxPrice);
-
-    return {
-      ...state,
-      all_products: [...action.payload],
-      filtered_products: [...action.payload],
-      filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
-    };
+  if(action.type === "UPDATE_SORT"){
+    return { ...state, sort: action.payload }
   }
 
   if (action.type === "SORT_PRODUCTS") {
     const { sort, filtered_products } = state;
 
     let tempProducts = [...filtered_products];
+
+    console.log(tempProducts)
 
     if (sort === "price-lowest") {
       tempProducts = tempProducts.sort((a, b) => a.price < b.price);
@@ -49,6 +56,7 @@ const filter_reducer = (state, action) => {
     const { text, category, brand, color, price, shipping } = state.filters;
 
     let tempProducts = [...all_products];
+    console.log(tempProducts);
     // filtering the products
     // Filter by Text
     if (text) {
@@ -93,4 +101,4 @@ const filter_reducer = (state, action) => {
   throw new Error(`Invalid action ${action.type}`);
 }
 
-export default filter_reducer
+export default filter_reducer;

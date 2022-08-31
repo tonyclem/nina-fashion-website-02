@@ -13,9 +13,9 @@ export const FilterProvider = ({ children }) => {
     }, [products]);
 
     React.useEffect(()=> {
-      dispatch({ type: "FILTER_PRODUCTS"});
-      dispatch({ type: "SORT_PRODUCTS"});
-    },[products, state.sort, state.filters]);
+      dispatch({ type: "SORT_PRODUCTS" });
+      // dispatch({ type: "FILTER_PRODUCTS"});
+    },[products, state.sort]);
 
     const setGridView = () => {
         dispatch({ type: "SET_TO_GRID" });
@@ -28,6 +28,7 @@ export const FilterProvider = ({ children }) => {
     const updateSort = (e) => {
       const value = e.target.value;
       dispatch({ type: "UPDATE_SORT", payload: value});
+      console.log(value);
     }
 
     const updateFilters = (e) => {
