@@ -1,20 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Filters, SortProductItems } from '../components';
+import { Filters, SortProductItems, ProductList } from "../components";
 
 export const ProductsPage = () => {
   return (
     <main>
-        <Wrapper className='page'>
-            <div className='section-center products'>
-                <Filters />
-                <div>
-                  <SortProductItems />
-                </div>
-            </div>
-        </Wrapper>
+      <Wrapper className="page">
+        <div className="section-center products">
+          <Filters />
+          <div>
+            <SortProductItems />
+            <ProductList />
+          </div>
+        </div>
+      </Wrapper>
     </main>
-  )
+  );
 }
 
 

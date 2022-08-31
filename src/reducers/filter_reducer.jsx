@@ -49,7 +49,6 @@ const filter_reducer = (state, action) => {
     const { text, category, brand, color, price, shipping } = state.filters;
 
     let tempProducts = [...all_products];
-
     // filtering the products
     // Filter by Text
     if (text) {

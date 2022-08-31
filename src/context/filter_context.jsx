@@ -6,7 +6,7 @@ import reducer from "../reducers/filter_reducer";
 const FilterContext = React.createContext();
 export const FilterProvider = ({ children }) => {
   const { products } = useProductsContext();
-    const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
     React.useEffect(()=> {
       dispatch({ type: "LOAD_PRODUCTS", payload: products})

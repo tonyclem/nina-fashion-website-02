@@ -17,6 +17,8 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 import Filters from "./Filters";
 import SortProductItems from "./SortProductItems";
+import ProductGridView from "./ProductGridView";
+import ProductList from "./ProductList";
 
 
 
@@ -39,5 +41,7 @@ export {
   Contact,
   Filters,
   SortProductItems,
+  ProductGridView ,
+  ProductList ,
   Footer,
 };
