@@ -38,6 +38,7 @@ body {
   --radius: 0.25rem;
   --clr-error: hsl(0, 100%, 68%);
   --clr-black: #222;
+  --clr-red-dark: hsl(360, 67%, 44%);
   --max-width: 1170px;
 }
 

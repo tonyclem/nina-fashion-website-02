@@ -30,8 +30,6 @@ const filter_reducer = (state, action) => {
 
     let tempProducts = [...filtered_products];
 
-    console.log(tempProducts)
-
     if (sort === "price-lowest") {
       tempProducts = tempProducts.sort((a, b) => a.price < b.price);
     }
@@ -55,47 +53,56 @@ const filter_reducer = (state, action) => {
     const { all_products } = state;
     const { text, category, brand, color, price, shipping } = state.filters;
 
-    let tempProducts = [...all_products];
-    console.log(tempProducts);
-    // filtering the products
-    // Filter by Text
-    if (text) {
-      tempProducts = tempProducts.filter((product) => {
-        return product.name.toLowerCase().startsWith(text);
-      });
-    }
 
-    // Filter by Category
-    if (category !== "all") {
-      tempProducts = tempProducts.filter(
-        (product) => product.category === category
+
+    let tempProducts = [...all_products];
+
+   
+
+    if (text) {
+      tempProducts = tempProducts.filter((product) =>
+        product.name.toLowerCase().startsWith(text)
       );
     }
     
-    // Filter by Company
-    if (brand !== "all") {
-        tempProducts = tempProducts.filter(
-            (product) => product.brand === brand
-            );
-        }
-        
-        // Filter by Colors
-        if (color !== "all") {
-            tempProducts = tempProducts.filter((product) => {
-                return product.colors.find((c) => c === color);
-            });
-        }
-        
-        // Filter by Price
-        tempProducts = tempProducts.filter((product) => product.price <= price);
-        
-        // Filter by Shipping
-        if (shipping) {
-            tempProducts = tempProducts.filter((product) => product.shipping === true);
-        }
-
-        return { ...state, filtered_products: tempProducts };
+    // category
+    if(category !== "all"){
+      tempProducts = tempProducts.filter((product) => product.category === category)
     }
+
+    // brand 
+    if (brand !== "all") {
+      tempProducts = tempProducts.filter(
+        (product) => product.brand === brand
+      );
+    }
+
+
+
+
+    
+    return { ...state, filtered_products: tempProducts };
+  }
+
+  if(action.type === 'UPDATE_FILTERS'){
+    const {name, value} = action.payload;
+    return { ...state, filters: { ...state.filter, [name] : value}}
+  }
+
+   if (action.type === 'CLEAR_FILTERS') {
+     return {
+       ...state,
+       filters: {
+         ...state.filters,
+         text: "",
+         brand: "all",
+         category: "all",
+         color: "all",
+         price: state.filters.max_price,
+         shipping: false,
+       },
+     };
+   }
 
 
   throw new Error(`Invalid action ${action.type}`);

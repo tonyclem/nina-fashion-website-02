@@ -2,7 +2,8 @@ import React from 'react';
 import { FaCheck } from 'react-icons/fa';
 import styled from 'styled-components';
 import { useFilterContext } from '../context/filter_context';
-import { getUniqueValues } from '../utils/helpers';
+import { getUniqueValues, formatPrice } from "../utils/helpers";
+
 
 
 const Filters = () => {
@@ -12,14 +13,18 @@ const Filters = () => {
        category,
        brand,
        color,
+       min_price,
+       price,
+       max_price,
        shipping
     },
     updateFilters,
-    all_products
+    all_products,
+    clearFilters
    } = useFilterContext()
 
    const categories = getUniqueValues(all_products, "category");
-   const companies = getUniqueValues(all_products, "brand");
+   const brands = getUniqueValues(all_products, "brand");
    const colors = getUniqueValues(all_products, "colors");
 
 
@@ -67,12 +72,12 @@ const Filters = () => {
           <div className="form-control">
             <h5>Company</h5>
             <select
-              name="company"
+              name="brand"
               value={brand}
               onChange={updateFilters}
-              className="company"
+              className="brand"
             >
-              {companies.map((companyName, index) => {
+              {brands.map((companyName, index) => {
                 return <option key={index}>{companyName}</option>;
               })}
             </select>
@@ -81,7 +86,7 @@ const Filters = () => {
           <div className="form-control">
             <h5>colors</h5>
             <div className="colors">
-              {colors.slice(0, 5).map((itemsColors, index) => {
+              {colors.slice(0, 6).map((itemsColors, index) => {
                 if (itemsColors === "all") {
                   return (
                     <button
@@ -118,12 +123,38 @@ const Filters = () => {
             </div>
           </div>
           {/* end color */}
+
+          {/* Price */}
+          <div className="form-control">
+            <h5>price</h5>
+            <p className="price">{formatPrice(price)}</p>
+            <input
+              type="range"
+              name="price"
+              min={min_price}
+              max={max_price}
+              onChange={updateFilters}
+              value={price}
+            />
+          </div>
+          {/* End Price */}
+
           {/* Check */}
           <div className="form-control shipping">
-            <label htmlFor="shipping">frees shipping</label>
-            <input type="checkbox" name="shipping" value={shipping} onChange={updateFilters}/>
+            <label htmlFor="shipping">free shipping</label>
+            <input
+              type="checkbox"
+              name="shipping"
+              id="shipping"
+              value={shipping}
+              onChange={updateFilters}
+              checked={shipping}
+            />
           </div>
         </form>
+        <button type="button" className="clear-btn" onClick={clearFilters}>
+          clear filter
+        </button>
       </div>
     </Wrapper>
   );
