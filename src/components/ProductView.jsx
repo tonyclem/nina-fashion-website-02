@@ -5,14 +5,12 @@ import { FaRegEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ProductViews = (products) => {
-    const { _id: id, image, name, price, slug } = products;
+  const { _id: id, image, name, price, slug } = products;
   return (
     <Wrapper>
       <div className="container" key={id}>
-        <div
-          className="item"
-        >
-          <img src={image} alt={name}/>
+        <div className="item">
+          <img src={image} alt={name} />
           <Link to={`/products/${slug}`} className="link">
             <FaRegEye />
           </Link>
@@ -34,14 +32,14 @@ const Wrapper = styled.article`
   }
   img {
     width: 100%;
+    height: 300px;
     display: block;
     object-fit: center;
     border-radius: var(--radius);
     transition: var(--transition);
   }
-  .item{
+  .item {
     width: 100%;
-
   }
   .link {
     position: absolute;

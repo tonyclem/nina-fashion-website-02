@@ -7,7 +7,7 @@ import { formatPrice } from "../utils/helpers";
 
 const AllHomePageProduct = (products) => {
   const { _id: id, image, name, description, price, slug } = products;
- 
+
   return (
     <Wrapper>
       <div className="container">
@@ -48,18 +48,18 @@ const Wrapper = styled.section`
     align-items: center;
   }
 
-
-
   .item {
     width: 220px;
     height: 310px;
     background: gray;
     border-radius: var(--radius);
     position: relative;
-
     background-position: center;
     background-repeat: no-repeat;
-    
+
+    img {
+      object-fit: center;
+    }
   }
 
   .item span {

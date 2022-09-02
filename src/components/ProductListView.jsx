@@ -6,7 +6,7 @@ const ProductListView = ({ products }) => {
   return (
     <Wrapper>
       {products.map((product) => {
-        const { _id: id , image, name, price, description, slug } = product;
+        const { _id: id, image, name, price, description, slug } = product;
         return (
           <article key={id}>
             <img src={image} alt={name} />
@@ -33,8 +33,8 @@ const Wrapper = styled.section`
     width: 100%;
     display: block;
     width: 300px;
-    height: 200px;
-    object-fit: cover;
+    height: 300px;
+    object-fit: center;
     border-radius: var(--radius);
     margin-bottom: 1rem;
   }
@@ -50,8 +50,9 @@ const Wrapper = styled.section`
     margin-bottom: 1rem;
   }
   .btn {
-    font-size: 0.5rem;
+    font-size: 1.2rem;
     padding: 0.25rem 0.5rem;
+    margin: 1rem 0;
   }
   @media (min-width: 992px) {
     article {
