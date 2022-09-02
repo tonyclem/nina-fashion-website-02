@@ -53,11 +53,8 @@ const filter_reducer = (state, action) => {
     const { all_products } = state;
     const { text, category, brand, color, price, shipping } = state.filters;
 
-
-
     let tempProducts = [...all_products];
 
-   
 
     if (text) {
       tempProducts = tempProducts.filter((product) =>
@@ -77,7 +74,10 @@ const filter_reducer = (state, action) => {
       );
     }
 
-
+    // colors
+    if(color !== 'all'){
+      tempProducts = tempProducts.filter((product) => product.colors.find((c) => c === color))
+    }
 
 
     
