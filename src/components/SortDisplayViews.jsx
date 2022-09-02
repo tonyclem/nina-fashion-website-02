@@ -1,33 +1,33 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { BsList, BsFillGridFill } from "react-icons/bs";
-import { useFilterContext } from '../context/filter_context';
+import { useFilterContext } from "../context/filter_context";
 
 const SortDisplayViews = () => {
-    const { grid_view, setGridView, setListView } = useFilterContext();
+  const { grid_view, setGridView, setListView } = useFilterContext();
   return (
     <Wrapper>
-        <h2 className="sort-h2">All Products</h2>
-        <hr />
-        <div className="btn-container">
-          <button
-            type="button"
-            className={`${!grid_view ? "active" : null}`}
-            onClick={setGridView}
-          >
-            <BsFillGridFill />
-          </button>
-          <button
-            type="button"
-            className={`${grid_view ? "active" : null}`}
-            onClick={setListView}
-          >
-            <BsList />
-          </button>
-        </div>
+      <h2 className="sort-h2">All Products</h2>
+      <hr />
+      <div className="btn-container">
+        <button
+          type="button"
+          className={`${grid_view ? "active" : null}`}
+          onClick={setGridView}
+        >
+          <BsFillGridFill />
+        </button>
+        <button
+          type="button"
+          className={`${!grid_view ? "active" : null}`}
+          onClick={setListView}
+        >
+          <BsList />
+        </button>
+      </div>
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.div`
   display: grid;
@@ -47,7 +47,7 @@ const Wrapper = styled.div`
       margin-right: 0.5rem;
     }
   }
-  
+
   @media (min-width: 768px) {
     column-gap: 2rem;
   }
@@ -83,4 +83,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default SortDisplayViews
+export default SortDisplayViews;

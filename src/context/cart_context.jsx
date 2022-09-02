@@ -20,7 +20,12 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: "TOGGLE_CART_ITEM_AMOUNT", payload: { _id, value } });
   };
 
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" });
+  };
+
   useEffect(() => {
+    dispatch({ type: "COUNT_CART_TOTALS" });
     localStorage.setItem("shopCart", JSON.stringify(state.cart));
   }, [state.cart]);
 
@@ -29,6 +34,7 @@ export const CartProvider = ({ children }) => {
     addToCart,
     removeItem,
     toggleAmount,
+    clearCart,
   };
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;

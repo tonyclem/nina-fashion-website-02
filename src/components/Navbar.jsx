@@ -5,10 +5,11 @@ import { FaInstagram, FaFacebook, FaUserAlt, FaBars } from "react-icons/fa";
 import logo from "../assets/logo.svg";
 import { useProductsContext } from "../context/products_context";
 import shoppingBag from "../assets/shoppingbag.svg";
-
+import { useCartContext } from "../context/cart_context";
 
 const Navbar = () => {
   const { openSidebar } = useProductsContext();
+  const { total_items } = useCartContext();
   return (
     <main>
       <Wrapper>
@@ -22,9 +23,7 @@ const Navbar = () => {
                 <Link to="/page/contact" className="contact">
                   contact
                 </Link>
-                <li>
-                  service
-                </li>
+                <li>service</li>
               </div>
 
               <div className="contact-social">
@@ -55,7 +54,7 @@ const Navbar = () => {
                 <li className="nav-hover underline">home</li>
               </Link>
               <Link to="/products">
-              <li className="nav-hover underline">product</li>
+                <li className="nav-hover underline">product</li>
               </Link>
               <Link to="/about">
                 <li className="nav-hover underline">about us</li>
@@ -68,7 +67,7 @@ const Navbar = () => {
               <span className="bag">
                 <img src={shoppingBag} alt="shopping bag" />
                 <span className="item-count">
-                  <Link to="/cart"></Link>
+                  <Link to="/cart">{total_items}</Link>
                 </span>
               </span>
 
@@ -99,7 +98,7 @@ const Wrapper = styled.div`
   .ul-contact {
     display: none;
 
-    .contact{
+    .contact {
       color: #000;
     }
   }
