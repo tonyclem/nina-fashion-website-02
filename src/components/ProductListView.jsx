@@ -6,7 +6,7 @@ const ProductListView = ({ products }) => {
   return (
     <Wrapper>
       {products.map((product) => {
-        const { id, image, name, price, description, slug } = product;
+        const { _id: id , image, name, price, description, slug } = product;
         return (
           <article key={id}>
             <img src={image} alt={name} />

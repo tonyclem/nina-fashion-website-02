@@ -10,13 +10,13 @@ const Filters = () => {
    const { 
     filters: {
       text,
-       category,
-       brand,
-       color,
-       min_price,
-       price,
-       max_price,
-       shipping
+      category,
+      brand,
+      color,
+      min_price,
+      price,
+      max_price,
+      shipping
     },
     updateFilters,
     all_products,
