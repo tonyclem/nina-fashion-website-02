@@ -5,6 +5,18 @@ const cart_reducer = (state, action) => {
     const tempItem = state.cart.find((item) => item.id === _id + color);
 
     if (tempItem) {
+      const tempCart = state.cart.map((cartItem) => {
+        if (cartItem.id === _id + color) {
+          let newAmount = cartItem.amount + amount;
+          if (newAmount > cartItem.max) {
+            newAmount = cartItem.max;
+          }
+          return { ...cartItem, amount: newAmount };
+        } else {
+          return cartItem;
+        }
+      });
+      return { ...state, cart: tempCart };
     } else {
       const newItem = {
         id: _id + color,
@@ -18,6 +30,35 @@ const cart_reducer = (state, action) => {
 
       return { ...state, cart: [...state.cart, newItem] };
     }
+  }
+
+  if (action.type === "REMOVE_CART_ITEM") {
+    const tempCart = state.cart.filter((item) => item.id !== action.payload);
+    return { ...state, cart: tempCart };
+  }
+
+  if (action.type === "TOGGLE_CART_ITEM_AMOUNT") {
+    const { _id, value } = action.payload;
+    const tempCart = state.cart.map((item) => {
+      if (item.id === _id) {
+        if (value === "inc") {
+          let newAmount = item.amount + 1;
+          if (newAmount > item.max) {
+            newAmount = item.max;
+          }
+          return { ...item, amount: newAmount };
+        }
+        if (value === "dec") {
+          let newAmount = item.amount - 1;
+          if (newAmount < 1) {
+            newAmount = 1;
+          }
+          return { ...item, amount: newAmount };
+        }
+      }
+      return item;
+    });
+    return { ...state, cart: tempCart };
   }
   throw new Error(`No Matching ${action.type} - action type`);
 };
