@@ -26,6 +26,7 @@ const Product = ({ imageUrl, name, id, price, description }) => {
 };
 
 const Wrapper = styled.article`
+  margin-bottom: 2rem;
   .container {
     position: relative;
     background: var(--on-primary);

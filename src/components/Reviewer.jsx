@@ -38,6 +38,10 @@ const Reviewer = () => {
 };
 
 const Wrapper = styled.section`
+  p {
+    padding: 0.8rem;
+  }
+
   text-align: center;
 
   .text-container {
@@ -74,6 +78,10 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: 992px) {
+    p {
+      margin-button: 2rem;
+    }
+
     .text-container {
       grid-template-columns: 1fr;
       margin: 1.5rem auto;
@@ -85,6 +93,9 @@ const Wrapper = styled.section`
     }
   }
   @media (max-width: 576px) {
+    p {
+      margin-button: 2rem;
+    }
     .text-container {
       grid-template-columns: 1fr;
       margin: auto;

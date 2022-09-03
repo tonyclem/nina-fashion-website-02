@@ -73,6 +73,7 @@ const Wrapper = styled.section`
     text-align: center;
     width: 77px;
     height: 70px;
+    padding-top: 0.5rem;
   }
 `;
 
