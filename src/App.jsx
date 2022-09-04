@@ -1,7 +1,15 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom"
-import {HomePage, SingleProductPage, ContactUsPage, AboutPage, ProductsPage, CartPage} from "./pages"
-import { Navbar, Sidebar, Footer} from "./components";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  HomePage,
+  SingleProductPage,
+  ContactUsPage,
+  AboutPage,
+  ProductsPage,
+  CartPage,
+  LoginPage,
+  RegisterPage,
+} from "./pages";
+import { Navbar, Sidebar, Footer } from "./components";
 
 function App() {
   return (
@@ -13,8 +21,10 @@ function App() {
         <Route exact path="/products/:slug" element={<SingleProductPage />} />
         <Route exact path="/page/contact" element={<ContactUsPage />} />
         <Route exact path="/about" element={<AboutPage />} />
-        <Route exact path='/products' element={<ProductsPage />} />
+        <Route exact path="/products" element={<ProductsPage />} />
         <Route exact path="/cart" element={<CartPage />} />
+        <Route exact path="/signin" element={<LoginPage />} />
+        <Route exact path="/signup" element={<RegisterPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

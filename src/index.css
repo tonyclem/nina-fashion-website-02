@@ -130,7 +130,6 @@ h5 {
 }
 
 hr {
-  margin-top: 1.5rem;
   border: none;
   border-top: 1px solid var(--clr-grey-8);
 }

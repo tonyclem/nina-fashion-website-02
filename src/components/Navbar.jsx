@@ -62,7 +62,9 @@ const Navbar = () => {
             </ul>
             <div className="nav-social ul-nav">
               <span>
-                <FaUserAlt />
+                <Link to="/signin">
+                  <FaUserAlt />
+                </Link>
               </span>
               <span className="bag">
                 <img src={shoppingBag} alt="shopping bag" />
@@ -240,6 +242,10 @@ const Wrapper = styled.div`
           margin-left: 1rem;
           margin-right: 1.5rem;
           font-size: 1.8rem;
+
+          a {
+            color: #000;
+          }
         }
 
         .bag {

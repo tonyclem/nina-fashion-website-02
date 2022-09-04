@@ -33,6 +33,7 @@ const CartContent = () => {
 };
 
 const Wrapper = styled.section`
+  margin: 0 1rem;
   .link-container {
     display: flex;
     justify-content: space-between;

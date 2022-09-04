@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../context/cart_context";
 import { formatPrice } from "../utils/helpers";
 
 const CartTotals = () => {
   const { total_amount, shipping_fee } = useCartContext();
+  const navigate = useNavigate();
+
+  const checkoutHandler = () => {
+    navigate("/signin?redirect=/shipping");
+  };
+
   return (
     <Wrapper>
       <div>
@@ -21,9 +27,9 @@ const CartTotals = () => {
             order total: <span>{formatPrice(total_amount + shipping_fee)}</span>
           </h4>
         </article>
-        <Link to="/checkout" className="btn">
+        <button className="btn" onClick={checkoutHandler}>
           proceed to checkout
-        </Link>
+        </button>
       </div>
     </Wrapper>
   );
@@ -43,6 +49,7 @@ const Wrapper = styled.section`
   p {
     display: grid;
     grid-template-columns: 200px 1fr;
+    padding-bottom: 1rem;
   }
   p {
     text-transform: capitalize;
