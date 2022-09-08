@@ -1,19 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FaInstagram, FaFacebook, FaUserAlt, FaBars } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaUserAlt,
+  FaBars,
+  FaAngleDown,
+} from "react-icons/fa";
+import { NavDropdown } from "react-bootstrap";
 import logo from "../assets/logo.svg";
 import { useProductsContext } from "../context/products_context";
 import shoppingBag from "../assets/shoppingbag.svg";
 import { useCartContext } from "../context/cart_context";
+import { useUserContext } from "../context/user_context";
 
-const Navbar = () => {
-  const { openSidebar } = useProductsContext();
+const NavBar = () => {
+  const { openSidebar, openDropDown } = useProductsContext();
   const { total_items } = useCartContext();
+  const { state } = useUserContext();
+  const { userInfo } = state;
   return (
     <main>
       <Wrapper>
-        <header>
+        <header className="left-padding">
           <div className="nav-advert">
             <p>BUY NOW PAY LATER | FREE SHIPPING | FAST DELIVERY</p>
           </div>
@@ -36,6 +46,7 @@ const Navbar = () => {
               </div>
             </ul>
           </div>
+
           <nav className="nav-container">
             <div className="nav-logo">
               <Link to="/">
@@ -65,6 +76,32 @@ const Navbar = () => {
                 <Link to="/signin">
                   <FaUserAlt />
                 </Link>
+                <span>
+                  {userInfo ? (
+                    <span className="user-container">
+                      <span>
+                        <span onClick={() => console.log("hello  world")}>
+                          {userInfo.name}
+                          <FaAngleDown className="angle" />
+                        </span>
+                        <div className="nav-dropdown-container">
+                          <Link to="/profile">
+                            <p className="text-muted">User Profile</p>
+                          </Link>
+                          <Link to="/orderhistory">
+                            <p className="text-muted">Order History</p>
+                          </Link>
+                          <NavDropdown.Divider />
+                          <Link className="dropdown-item" to="#signout">
+                            <p className="text-muted">Sign Out</p>
+                          </Link>
+                        </div>
+                      </span>
+                    </span>
+                  ) : (
+                    <Link to="/signin">Login</Link>
+                  )}
+                </span>
               </span>
               <span className="bag">
                 <img src={shoppingBag} alt="shopping bag" />
@@ -134,6 +171,7 @@ const Wrapper = styled.div`
   @media (min-width: 992px) {
     main {
       width: 90vw;
+      padding-left: 1rem;
     }
 
     .nav-advert {
@@ -236,15 +274,35 @@ const Wrapper = styled.div`
       }
 
       .nav-social {
-        margin-right: 3rem;
+        margin-right: 1rem;
 
         span {
           margin-left: 1rem;
-          margin-right: 1.5rem;
+          margin-right: 1rem;
           font-size: 1.8rem;
 
           a {
             color: #000;
+          }
+
+          .user-container {
+            position: relative;
+
+            .angle {
+              padding-left: 0.5rem;
+            }
+
+            .nav-dropdown-container {
+              margin-top: 1rem;
+              width: 190px;
+              position: absolute;
+              background: #f7f4f4;
+              z-index: 3;
+
+              .text-muted {
+                padding: 10px 10px;
+              }
+            }
           }
         }
 
@@ -330,4 +388,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default Navbar;
+export default NavBar;

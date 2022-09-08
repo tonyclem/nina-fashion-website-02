@@ -1,26 +1,20 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import axios from "axios";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/user_context";
 import styled from "styled-components";
-import { signInUser } from "../utils/constants";
 
 export const LoginPage = () => {
   const { search } = useLocation();
+  const navigate = useNavigate();
   const redirectInUrl = new URLSearchParams(search).get("redirect");
   const redirect = redirectInUrl ? redirectInUrl : "/";
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const { submitHandler, setEmail, setPassword } = useUserContext();
 
-  const submitHandler = async (e) => {
+  const connect = (e) => {
     e.preventDefault();
-    try {
-      const { data } = await axios.post(signInUser, {
-        email,
-        password,
-      });
-      console.log(data);
-    } catch (error) {}
+    submitHandler(e);
+    navigate(redirect || "/");
   };
 
   return (
@@ -28,7 +22,7 @@ export const LoginPage = () => {
       <div className="container">
         <h2>Welcome</h2>
         <p>Please login or sign up to continue shopping</p>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={connect}>
           <div>
             <label htmlFor="email">Email</label>
             <input

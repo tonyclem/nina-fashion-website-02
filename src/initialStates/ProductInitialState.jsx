@@ -1,5 +1,6 @@
 const initialState = {
   isSidebarOpen: false,
+  isDropDownOpen: false,
   products_loading: false,
   products_error: false,
   products: [],
@@ -9,4 +10,4 @@ const initialState = {
   single_product: {},
 };
 
-export default initialState
+export default initialState;
