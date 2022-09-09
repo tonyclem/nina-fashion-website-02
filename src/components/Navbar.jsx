@@ -13,13 +13,14 @@ import logo from "../assets/logo.svg";
 import { useProductsContext } from "../context/products_context";
 import shoppingBag from "../assets/shoppingbag.svg";
 import { useCartContext } from "../context/cart_context";
-import { useUserContext } from "../context/user_context";
+import { UserContext } from "../context/user_context";
 
 const NavBar = () => {
-  const { openSidebar, openDropDown } = useProductsContext();
+  const { openSidebar } = useProductsContext();
   const { total_items } = useCartContext();
-  const { state } = useUserContext();
+  const { state } = React.useContext(UserContext);
   const { userInfo } = state;
+
   return (
     <main>
       <Wrapper>
@@ -79,8 +80,8 @@ const NavBar = () => {
                 <span>
                   {userInfo ? (
                     <span className="user-container">
-                      <span>
-                        <span onClick={() => console.log("hello  world")}>
+                      <span className="display-info">
+                        <span>
                           {userInfo.name}
                           <FaAngleDown className="angle" />
                         </span>
@@ -92,7 +93,11 @@ const NavBar = () => {
                             <p className="text-muted">Order History</p>
                           </Link>
                           <NavDropdown.Divider />
-                          <Link className="dropdown-item" to="#signout">
+                          <Link
+                            className="dropdown-item"
+                            to="#signout"
+                            onClick={() => console.log("hello")}
+                          >
                             <p className="text-muted">Sign Out</p>
                           </Link>
                         </div>
@@ -292,15 +297,25 @@ const Wrapper = styled.div`
               padding-left: 0.5rem;
             }
 
+            .display-info:hover .nav-dropdown-container {
+              display: block;
+            }
+
             .nav-dropdown-container {
-              margin-top: 1rem;
               width: 190px;
               position: absolute;
-              background: #f7f4f4;
+              background: #f1f1f1;
               z-index: 3;
-
+              display: none;
+              border-radius: 9px;
               .text-muted {
                 padding: 10px 10px;
+                margin-top: 1rem;
+              }
+
+              .text-muted:hover {
+                background: var(--clr-primary-5);
+                border-radius: 9px;
               }
             }
           }

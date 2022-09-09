@@ -1,6 +1,8 @@
 import React from "react";
+import axios from "axios";
+import { signInUser } from "../utils/constants";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useUserContext } from "../context/user_context";
+import { UserContext } from "../context/user_context";
 import styled from "styled-components";
 
 export const LoginPage = () => {
@@ -9,12 +11,24 @@ export const LoginPage = () => {
   const redirectInUrl = new URLSearchParams(search).get("redirect");
   const redirect = redirectInUrl ? redirectInUrl : "/";
 
-  const { submitHandler, setEmail, setPassword } = useUserContext();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-  const connect = (e) => {
+  const { state, dispatch: contextDispatch } = React.useContext(UserContext);
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    submitHandler(e);
-    navigate(redirect || "/");
+    try {
+      const { data } = await axios.post(signInUser, {
+        email,
+        password,
+      });
+      contextDispatch({ type: "USER_SIGNIN", payload: data });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      navigate(redirect || "/");
+    } catch (error) {
+      alert("Invalid Email or Password");
+    }
   };
 
   return (
@@ -22,7 +36,7 @@ export const LoginPage = () => {
       <div className="container">
         <h2>Welcome</h2>
         <p>Please login or sign up to continue shopping</p>
-        <form onSubmit={connect}>
+        <form onSubmit={submitHandler}>
           <div>
             <label htmlFor="email">Email</label>
             <input
