@@ -10,6 +10,7 @@ const reducers = (state, action) => {
       cart: {
         cartItem: [],
         shippingAddress: {},
+        paymentMethod: "",
       },
     };
   }
@@ -18,6 +19,13 @@ const reducers = (state, action) => {
     return {
       ...state,
       cart: { ...state.cart, shippingAddress: action.payload },
+    };
+  }
+
+  if (action.type === "SET_PAYMENT_METHOD") {
+    return {
+      ...state,
+      cart: { ...state.cart, paymentMethod: action.payload },
     };
   }
 };

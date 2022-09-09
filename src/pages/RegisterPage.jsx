@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { registerUser } from "../utils/constants";
 import { UserContext } from "../context/user_context";

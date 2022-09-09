@@ -25,6 +25,7 @@ const NavBar = () => {
     contextDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
     localStorage.removeItem("shippingAddress");
+    localStorage.removeItem("");
   };
 
   return (

@@ -7,6 +7,7 @@ import { CartPage } from "./CartPage";
 import { LoginPage } from "./LoginPage";
 import { RegisterPage } from "./RegisterPage";
 import { ShippingPage } from "./ShippingAddress";
+import { PaymentMethodPage } from "./PaymentMethod";
 
 export {
   HomePage,
@@ -18,4 +19,5 @@ export {
   LoginPage,
   RegisterPage,
   ShippingPage,
+  PaymentMethodPage,
 };
