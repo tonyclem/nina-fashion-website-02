@@ -6,6 +6,7 @@ import { ProductsPage } from "./ProductsPage";
 import { CartPage } from "./CartPage";
 import { LoginPage } from "./LoginPage";
 import { RegisterPage } from "./RegisterPage";
+import { ShippingPage } from "./ShippingAddress";
 
 export {
   HomePage,
@@ -16,4 +17,5 @@ export {
   CartPage,
   LoginPage,
   RegisterPage,
+  ShippingPage,
 };

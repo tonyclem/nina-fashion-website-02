@@ -20,6 +20,7 @@ import SortProductItems from "./SortProductItems";
 import ProductGridView from "./ProductGridView";
 import ProductList from "./ProductList";
 import CartContent from "./CartContent";
+import CheckoutStep from "./CheckoutStep";
 
 export {
   Hero,
@@ -43,5 +44,6 @@ export {
   ProductGridView,
   ProductList,
   CartContent,
+  CheckoutStep,
   Footer,
 };

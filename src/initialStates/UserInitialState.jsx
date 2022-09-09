@@ -3,9 +3,15 @@ const initialState = {
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null,
 
-  cart: localStorage.getItem("shopCart")
-    ? JSON.parse(localStorage.getItem("shopCart"))
-    : null,
+  cart: {
+    cartItems: localStorage.getItem("shopCart")
+      ? JSON.parse(localStorage.getItem("shopCart"))
+      : null,
+
+    shippingAddress: localStorage.getItem("shippingAddress")
+      ? JSON.parse(localStorage.getItem("shippingAddress"))
+      : {},
+  },
 };
 
 export default initialState;

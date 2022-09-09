@@ -10,6 +10,7 @@ import {
   CartPage,
   LoginPage,
   RegisterPage,
+  ShippingPage,
 } from "./pages";
 import { Navbar, Sidebar, Footer } from "./components";
 
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/cart" element={<CartPage />} />
         <Route exact path="/signin" element={<LoginPage />} />
         <Route exact path="/signup" element={<RegisterPage />} />
+        <Route exact path="/shipping" element={<ShippingPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

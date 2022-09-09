@@ -42,7 +42,7 @@ export const LoginPage = () => {
 
   return (
     <Wrapper>
-      <div className="container">
+      <div className="container small-container">
         <h2>Welcome</h2>
         <p>Please login or sign up to continue shopping</p>
         <form onSubmit={submitHandler}>
