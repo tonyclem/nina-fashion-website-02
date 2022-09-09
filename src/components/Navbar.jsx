@@ -18,8 +18,13 @@ import { UserContext } from "../context/user_context";
 const NavBar = () => {
   const { openSidebar } = useProductsContext();
   const { total_items } = useCartContext();
-  const { state } = React.useContext(UserContext);
+  const { state, dispatch: contextDispatch } = React.useContext(UserContext);
   const { userInfo } = state;
+
+  const signoutHandler = () => {
+    contextDispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+  };
 
   return (
     <main>
@@ -96,7 +101,7 @@ const NavBar = () => {
                           <Link
                             className="dropdown-item"
                             to="#signout"
-                            onClick={() => console.log("hello")}
+                            onClick={signoutHandler}
                           >
                             <p className="text-muted">Sign Out</p>
                           </Link>

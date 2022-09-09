@@ -1,9 +1,10 @@
 import React from "react";
 import axios from "axios";
-import { signInUser } from "../utils/constants";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { UserContext } from "../context/user_context";
 import styled from "styled-components";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { signInUser } from "../utils/constants";
+import { UserContext } from "../context/user_context";
 
 export const LoginPage = () => {
   const { search } = useLocation();
@@ -15,6 +16,7 @@ export const LoginPage = () => {
   const [password, setPassword] = React.useState("");
 
   const { state, dispatch: contextDispatch } = React.useContext(UserContext);
+  const { userInfo } = state;
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -26,10 +28,17 @@ export const LoginPage = () => {
       contextDispatch({ type: "USER_SIGNIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate(redirect || "/");
+      toast.success("successfully logged in");
     } catch (error) {
-      alert("Invalid Email or Password");
+      toast.error("Invalid Email or Password");
     }
   };
+
+  React.useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
 
   return (
     <Wrapper>
