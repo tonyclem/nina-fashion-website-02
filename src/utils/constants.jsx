@@ -109,3 +109,6 @@ export const singleProductUrl = `https://back-end-tested.herokuapp.com/api/produ
 
 export const signInUser =
   "https://back-end-tested.herokuapp.com/api/users/signin";
+
+export const registerUser =
+  "https://back-end-tested.herokuapp.com/api/users/signup";

@@ -21,6 +21,7 @@ const Wrapper = styled.footer`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    bottom: 0;
   }
 `;
 

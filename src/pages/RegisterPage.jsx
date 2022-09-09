@@ -1,24 +1,87 @@
 import React from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { registerUser } from "../utils/constants";
+import { UserContext } from "../context/user_context";
 
 export const RegisterPage = () => {
+  const { search } = useLocation();
+  const navigate = useNavigate();
+  const redirectInUrl = new URLSearchParams(search).get("redirect");
+  const redirect = redirectInUrl ? redirectInUrl : "/";
+
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
+
+  const { state, dispatch: contextDispatch } = React.useContext(UserContext);
+  const { userInfo } = state;
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error("Password do not match");
+      return;
+    }
+    try {
+      const { data } = await axios.post(registerUser, {
+        name,
+        email,
+        password,
+      });
+      contextDispatch({ type: "USER_SIGNIN", payload: data });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      navigate(redirect || "/");
+      toast.success("successfully logged in");
+    } catch (error) {
+      toast.error("Invalid Email or Password");
+    }
+  };
+
+  React.useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
+
   return (
     <Wrapper>
-      <div className="container">
+      <div className="container small-container">
         <h2>Sign Up</h2>
         <p>Please Sign up to continue shopping</p>
-        <form>
+        <form onSubmit={submitHandler}>
           <div>
             <label htmlFor="email">Name</label>
-            <input type="name" name="name" placeholder="Name" />
+            <input
+              type="name"
+              name="name"
+              placeholder="Name"
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" placeholder="Email" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" placeholder="Password" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div>
             <label htmlFor="password">Confirm Password</label>
@@ -26,6 +89,8 @@ export const RegisterPage = () => {
               type="password"
               name="password"
               placeholder="Confirm Password"
+              required
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
           <span>
@@ -34,7 +99,8 @@ export const RegisterPage = () => {
             </span>
             By creating account you have agree with our term & condition
           </span>
-          <button type="submit">Login</button>
+
+          <button type="submit">Sign Up</button>
         </form>
       </div>
     </Wrapper>
