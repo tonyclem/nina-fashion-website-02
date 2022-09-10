@@ -8,6 +8,7 @@ import { LoginPage } from "./LoginPage";
 import { RegisterPage } from "./RegisterPage";
 import { ShippingPage } from "./ShippingAddress";
 import { PaymentMethodPage } from "./PaymentMethod";
+import { PlaceOrderPage } from "./PlaceOrder";
 
 export {
   HomePage,
@@ -20,4 +21,5 @@ export {
   RegisterPage,
   ShippingPage,
   PaymentMethodPage,
+  PlaceOrderPage,
 };

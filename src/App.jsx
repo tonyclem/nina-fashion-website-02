@@ -12,6 +12,7 @@ import {
   RegisterPage,
   ShippingPage,
   PaymentMethodPage,
+  PlaceOrderPage,
 } from "./pages";
 import { Navbar, Sidebar, Footer } from "./components";
 
@@ -37,6 +38,7 @@ function App() {
         <Route exact path="/signup" element={<RegisterPage />} />
         <Route exact path="/shipping" element={<ShippingPage />} />
         <Route exact path="/payment" element={<PaymentMethodPage />} />
+        <Route exact path="/placeorder" element={<PlaceOrderPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
