@@ -112,3 +112,5 @@ export const signInUser =
 
 export const registerUser =
   "https://back-end-tested.herokuapp.com/api/users/signup";
+
+export const orderInfoApi = "https://back-end-tested.herokuapp.com/api/orders";

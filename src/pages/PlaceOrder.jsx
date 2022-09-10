@@ -1,12 +1,34 @@
 import React from "react";
+import axios from "axios";
 import { Row, Col, Card, ListGroup, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 import { formatPrice } from "../utils/helpers";
 import CheckoutStep from "../components/CheckoutStep";
 import { UserContext } from "../context/user_context";
+import { Loading } from "../components/Loading";
+import { orderInfoApi } from "../utils/constants";
+
+const reducer = (action, state) => {
+  switch (action.type) {
+    case "CREATE_REQUEST":
+      return { ...state, loading: true };
+    case "CREATE_SUCCESS":
+      return { ...state, loading: false };
+    case "CREATE_FAIL":
+      return { ...state, loading: false };
+    default:
+      return state;
+  }
+};
 
 export const PlaceOrderPage = () => {
+  const [{ loading, error }, dispatch] = React.useReducer(reducer, {
+    loading: false,
+    error: "",
+  });
+
   const navigate = useNavigate();
   const { state, dispatch: contextDispatch } = React.useContext(UserContext);
   const { cart, userInfo } = state;
@@ -21,7 +43,35 @@ export const PlaceOrderPage = () => {
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
   cart.shippingPrice = cart.totalPrice > 100 ? round2(0) : round2(10);
 
-  const placeOrderHandler = async () => {};
+  const placeOrderHandler = async () => {
+    try {
+      dispatch({ type: "CREATE_REQUEST" });
+      const { data } = await axios.post(
+        orderInfoApi,
+        {
+          orderItems: cart.orderItems,
+          shippingAddress: cart.shippingAddress,
+          paymentMethod: cart.paymentMethod,
+          itemsPrice: cart.itemsPrice,
+          shippingPrice: cart.shippingPrice,
+          taxPrice: cart.taxPrice,
+          totalPrice: cart.totalPrice,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
+      contextDispatch({ type: "CART_CLEAR" });
+      dispatch({ type: "CREATE_SUCCESS" });
+      localStorage.removeItem("shopCart");
+      navigate(`/order/${data.order._id}`);
+    } catch (error) {
+      dispatch({ type: "CREATE_FAIL" });
+      toast.error("Please try again");
+    }
+  };
 
   React.useEffect(() => {
     if (!cart.paymentMethod) {
@@ -139,6 +189,7 @@ export const PlaceOrderPage = () => {
                         {" "}
                         Place order
                       </Button>
+                      {loading && <Loading />}
                     </div>
                   </ListGroup.Item>
                 </ListGroup>

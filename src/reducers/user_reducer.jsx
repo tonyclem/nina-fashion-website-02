@@ -1,4 +1,8 @@
 const reducers = (state, action) => {
+  if (action.type === "CART_CLEAR") {
+    return { ...state, cart: { ...state.cart, cartItems: [] } };
+  }
+
   if (action.type === "USER_SIGNIN") {
     return { ...state, userInfo: action.payload };
   }
